@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f5f0">
+<title>NOORE | Premium Fashion & Lifestyle</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#f7f5f0;--surface:#fffefa;--text:#24231f;
+ --muted:#77736c;--line:#e7e2d9;--accent:#a58b62;
+ --dark:#171715;--serif:"Playfair Display",Georgia,serif;
+ --sans:"DM Sans",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden}
+body.locked{overflow:hidden}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.announcement{height:34px;background:var(--dark);color:white;display:flex;align-items:center;overflow:hidden;white-space:nowrap;font-size:10px;letter-spacing:2px}
+.announcement-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
+.announcement-track span{padding:0 38px}
+.announcement:hover .announcement-track{animation-play-state:paused}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+.header{height:86px;background:#fffefaed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;padding:0 5%;position:sticky;top:0;z-index:100}
+.logo,.footer-logo{font-family:var(--serif);font-size:35px;letter-spacing:5px;font-weight:600;width:max-content}
+.nav{height:100%;display:flex;align-items:center;justify-content:center;gap:23px}
+.nav-item{height:100%;display:flex;align-items:center;position:relative;font-size:10px;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}
+.nav-link{height:100%;display:flex;align-items:center;transition:.2s}
+.nav-link:hover{color:var(--accent)}
+.nav-link::after{content:"";height:1px;background:var(--accent);position:absolute;bottom:25px;left:0;width:0;transition:.25s}
+.nav-link:hover::after{width:100%}
+.mega-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:245px;padding:25px;background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 40px #00000012;z-index:120;text-transform:none;letter-spacing:0}
+.nav-item:hover>.mega-menu,.nav-item:focus-within>.mega-menu{display:block}
+.mega-heading{font:20px var(--serif);margin-bottom:12px}
+.mega-menu a{display:block;padding:10px 0;color:var(--muted);font-size:12px;transition:.2s}
+.mega-menu a:hover{color:var(--text);padding-left:6px}
+.accessory-menu{position:relative}
+.submenu{display:none;position:absolute;left:100%;top:-15px;background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 25px #00000012;min-width:185px;padding:12px 20px}
+.accessory-menu:hover .submenu,.accessory-menu:focus-within .submenu{display:block}
+.header-actions{display:flex;justify-content:flex-end;align-items:center;gap:19px}
+.icon-btn{background:none;border:0;color:var(--text);font-size:22px;position:relative;line-height:1}
+.count{position:absolute;top:-9px;right:-10px;background:var(--dark);color:white;border-radius:50%;width:16px;height:16px;font-size:9px;display:grid;place-items:center}
+.mobile-menu-btn{display:none;background:none;border:0;font-size:25px}
+
+.hero{min-height:650px;position:relative;display:flex;align-items:center;padding:7%;overflow:hidden;background:#80715e;color:white}
+.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform 1.2s}
+.hero:hover .hero-image{transform:scale(1.025)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#171715b8 0%,#1717156e 43%,#17171505 100%)}
+.hero-content{position:relative;z-index:2;max-width:590px}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font:400 clamp(48px,7vw,91px)/1.04 var(--serif);margin-bottom:23px}
+.hero p{font-size:14px;line-height:1.9;max-width:440px;color:#f1eee8;margin-bottom:30px}
+.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 27px;border:1px solid white;background:white;color:var(--text);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transition:.3s}
+.primary-btn:hover{background:transparent;color:white}
+.secondary-btn{border-color:var(--text);background:transparent}
+.secondary-btn:hover{background:var(--text);color:white}
+.hero-controls{position:absolute;bottom:28px;right:5%;z-index:3;display:flex;gap:9px}
+.hero-dot{height:8px;width:8px;border-radius:50%;border:1px solid white;background:transparent;padding:0}
+.hero-dot.active{background:white}
+
+.section{padding:85px 5%}
+.section-heading{text-align:center;margin-bottom:42px}
+.section-heading .eyebrow{color:var(--accent)}
+.section-heading h2{font:400 clamp(30px,4vw,47px) var(--serif)}
+.section-heading p{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.8}
+.category-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.feature-card{height:390px;position:relative;overflow:hidden;background:#ded8ce;display:flex;align-items:flex-end;padding:28px;color:white}
+.feature-card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#000a)}
+.feature-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.feature-card:hover img{transform:scale(1.07)}
+.feature-card-content{position:relative;z-index:2}
+.feature-card h3{font:400 31px var(--serif);margin-bottom:10px}
+.feature-card a{font-size:10px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid white;padding-bottom:5px}
+
+.editorial{min-height:460px;display:grid;grid-template-columns:1fr 1fr;background:#e9e4da}
+.editorial-image{min-height:460px;overflow:hidden;background:#c2b4a0}
+.editorial-image img{width:100%;height:100%;min-height:460px;object-fit:cover}
+.editorial-content{display:flex;flex-direction:column;justify-content:center;padding:10%}
+.editorial-content h2{font:400 clamp(35px,4vw,57px)/1.15 var(--serif);margin:12px 0 20px}
+.editorial-content p{color:var(--muted);font-size:13px;line-height:1.9;margin-bottom:25px;max-width:460px}
+.editorial-content .secondary-btn{align-self:flex-start}
+
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 17px}
+.product-card{min-width:0}
+.product-image{position:relative;overflow:hidden;background:#e9e5dd;aspect-ratio:3/4}
+.product-image>img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-card:hover .product-image>img{transform:scale(1.05)}
+.product-actions{position:absolute;right:12px;top:12px;display:flex;flex-direction:column;gap:8px}
+.product-action{border:0;background:#fffefaeF;width:36px;height:36px;border-radius:50%;font-size:19px;transition:.2s}
+.product-action:hover,.product-action.selected{background:var(--dark);color:white}
+.quick-view{position:absolute;bottom:0;left:0;right:0;background:#fffefaed;border:0;padding:15px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transform:translateY(100%);transition:.3s}
+.product-card:hover .quick-view,.quick-view:focus{transform:translateY(0)}
+.product-info{padding-top:14px}
+.product-info h3{font-size:12px;font-weight:500;margin:7px 0}
+.product-category{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.product-price{font-size:12px;margin-top:8px}
+.product-label{position:absolute;top:12px;left:12px;background:#fffefaed;padding:7px 10px;font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.product-card .add-small{width:100%;border:1px solid var(--line);background:transparent;padding:10px;margin-top:12px;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.product-card .add-small:hover{background:var(--dark);color:white;border-color:var(--dark)}
+
+.page-banner{padding:78px 5%;text-align:center;background:#eae5dc;position:relative;overflow:hidden}
+.page-banner h1{font:400 clamp(40px,6vw,68px) var(--serif)}
+.page-banner p{color:var(--muted);font-size:12px;margin-top:12px}
+.page-banner .eyebrow{color:var(--accent)}
+.page-banner.has-image{color:white;background:#817565}
+.page-banner.has-image::before{content:"";position:absolute;inset:0;background:linear-gradient(#17171570,#17171570)}
+.page-banner.has-image>*{position:relative;z-index:1}
+.shop-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:28px;flex-wrap:wrap}
+.shop-toolbar p{color:var(--muted);font-size:12px}
+.shop-toolbar select{border:1px solid var(--line);padding:11px 14px;background:var(--surface);color:var(--text)}
+.page-content{display:none}
+.page-content.active{display:block}
+.subcategory-links{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:35px}
+.subcategory-links button{border:1px solid var(--line);padding:10px 16px;background:transparent;font-size:11px;color:var(--muted);transition:.2s}
+.subcategory-links button:hover,.subcategory-links button.active{background:var(--dark);color:white;border-color:var(--dark)}
+.empty-state{text-align:center;color:var(--muted);padding:55px 10px;font-size:13px;grid-column:1/-1}
+
+.search-overlay,.modal-overlay,.drawer-overlay{position:fixed;inset:0;background:#0008;z-index:300;display:none}
+.search-overlay.open,.drawer-overlay.open{display:block}
+.search-panel{background:var(--surface);padding:35px 6%;display:flex;gap:15px;align-items:center}
+.search-panel input{flex:1;min-width:0;border:0;border-bottom:1px solid var(--line);padding:13px;outline:none;background:transparent;font-size:16px}
+.close-btn{border:0;background:none;font-size:27px;color:var(--text)}
+.modal-overlay{align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.product-modal{background:var(--surface);width:min(900px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.product-modal>img{width:100%;height:100%;min-height:460px;object-fit:cover;background:#e9e5dd}
+.modal-info{padding:45px 35px;display:flex;flex-direction:column;justify-content:center}
+.modal-info h2{font:400 34px var(--serif);margin:12px 0}
+.modal-info p{font-size:13px;color:var(--muted);line-height:1.9;margin:12px 0 25px}
+.modal-close{position:absolute;top:12px;right:15px;z-index:2;background:white;border:0;width:36px;height:36px;border-radius:50%;font-size:22px}
+.full-btn{width:100%;padding:15px;background:var(--dark);color:white;border:1px solid var(--dark);font-size:10px;letter-spacing:1.3px;text-transform:uppercase;transition:.25s}
+.full-btn:hover{background:transparent;color:var(--dark)}
+.drawer{position:absolute;top:0;right:0;width:min(440px,100%);height:100%;background:var(--surface);padding:27px;overflow-y:auto}
+.drawer-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.drawer-header h2{font:400 26px var(--serif)}
+.drawer-item{display:grid;grid-template-columns:75px 1fr auto;gap:13px;padding:17px 0;border-bottom:1px solid var(--line);align-items:center}
+.drawer-item img{width:75px;height:90px;object-fit:cover;background:#eee}
+.drawer-item h4{font-size:12px;font-weight:500;margin-bottom:7px}
+.drawer-item p{font-size:11px;color:var(--muted);margin-top:4px}
+.remove-item{border:0;background:none;color:var(--muted);font-size:20px}
+.quantity-controls{display:flex;align-items:center;gap:10px;margin-top:8px}
+.quantity-controls button{width:24px;height:24px;border:1px solid var(--line);background:transparent}
+.drawer-total{display:flex;justify-content:space-between;padding:23px 0;font-size:14px}
+.drawer-footer-note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
+
+.footer{background:#1b1b19;color:#f5f2eb;padding:65px 5% 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px}
+.footer-logo{margin-bottom:17px}
+.footer p{color:#b8b4ab;font-size:12px;line-height:1.9;max-width:300px}
+.footer h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.footer a{display:block;color:#b8b4ab;font-size:12px;margin:12px 0}
+.footer a:hover{color:white}
+.footer-bottom{border-top:1px solid #ffffff25;margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;color:#aaa69d;font-size:10px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:var(--dark);color:white;padding:13px 22px;font-size:12px;z-index:500;opacity:0;pointer-events:none;transition:.3s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-nav{display:none}
+.no-scroll{overflow:hidden}
+
+@media(max-width:1150px){
+ .header{grid-template-columns:1fr auto 1fr;padding:0 3%}
+ .nav{gap:12px}.nav-item{font-size:9px}
+ .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:800px){
+ .header{height:72px;display:flex;justify-content:space-between}
+ .logo{font-size:28px}
+ .mobile-menu-btn{display:block;order:0}
+ .header>.logo{order:1}
+ .header-actions{order:2;gap:13px}
+ .nav{display:none;position:absolute;top:72px;left:0;right:0;height:auto;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 5%;align-items:stretch;flex-direction:column;gap:0;max-height:calc(100vh - 106px);overflow-y:auto}
+ .nav.mobile-open{display:flex}
+ .nav-item{height:auto;display:block;border-bottom:1px solid var(--line);font-size:11px}
+ .nav-link{height:auto;padding:15px 0;width:100%}
+ .nav-link::after{display:none}
+ .mega-menu{display:none;position:static;transform:none;box-shadow:none;border:0;padding:0 15px 15px;min-width:0}
+ .nav-item.mobile-expanded>.mega-menu{display:block}
+ .submenu{display:none;position:static;box-shadow:none;border:0;padding:0 15px}
+ .accessory-menu.mobile-expanded>.submenu{display:block}
+ .accessory-menu>a{cursor:pointer}
+ .hero{min-height:560px}
+ .category-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .feature-card{height:300px}
+ .editorial{grid-template-columns:1fr}
+ .editorial-image,.editorial-image img{min-height:330px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 12px}
+ .section{padding:60px 4%}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+ .announcement{height:30px;font-size:9px}
+ .header-actions{gap:10px}
+ .icon-btn{font-size:19px}
+ .hero{min-height:490px;padding:8%}
+ .hero h1{font-size:51px}
+ .category-feature-grid{gap:10px}
+ .feature-card{height:230px;padding:15px}
+ .feature-card h3{font-size:22px}
+ .product-info h3{font-size:11px}
+ .product-image{aspect-ratio:3/4}
+ .product-modal{grid-template-columns:1fr}
+ .product-modal>img{min-height:270px;max-height:350px}
+ .modal-info{padding:25px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:25px 15px}
+ .footer-grid>div:first-child{grid-column:1/-1}
+ .footer-bottom{flex-direction:column;gap:10px}
+ .quick-view{transform:none;opacity:.95;padding:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="announcement">
+ <div class="announcement-track">
+  <span>WELCOME TO NOORE — DISCOVER YOUR STYLE</span>
+  <span>TIMELESS STYLE · EVERYDAY ELEGANCE</span>
+  <span>EXPLORE OUR LATEST COLLECTIONS</span>
+  <span>WELCOME TO NOORE — DISCOVER YOUR STYLE</span>
+  <span>TIMELESS STYLE · EVERYDAY ELEGANCE</span>
+  <span>EXPLORE OUR LATEST COLLECTIONS</span>
+ </div>
+</div>
+
+<header class="header">
+ <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">☰</button>
+ <a class="logo" href="#home">NOORE</a>
+
+ <nav class="nav" id="mainNav">
+  <div class="nav-item"><a class="nav-link" href="#home">Home</a></div>
+
+  <div class="nav-item">
+   <a class="nav-link" href="#mens">Men's</a>
+   <div class="mega-menu">
+    <div class="mega-heading">Men's Collection</div>
+    <a href="#mens/casual">Casual Wear</a>
+    <a href="#mens/groom">Groom</a>
+    <a href="#mens/shalwar">Shalwar Kameez</a>
+    <a href="#mens/shoes">Shoes</a>
+    <a href="#mens/tshirt">T-Shirts</a>
+   </div>
+  </div>
+
+  <div class="nav-item">
+   <a class="nav-link" href="#ladies">Ladies Wear</a>
+   <div class="mega-menu">
+    <div class="mega-heading">Ladies Collection</div>
+    <a href="#ladies/dupattas">Dupattas</a>
+    <a href="#ladies/shawls">Shawls</a>
+    <a href="#ladies/unstitched">Unstitched</a>
+    <a href="#ladies/bridal">Bridal</a>
+    <a href="#ladies/casualwear">Casual Wear</a>
+    <a href="#ladies/partywear">Party Wear</a>
+    <a href="#ladies/sandals">Sandals</a>
+   </div>
+  </div>
+
+  <div class="nav-item"><a class="nav-link" href="#babywear">Babywear</a></div>
+
+  <div class="nav-item">
+   <a class="nav-link" href="#handmade">Handmade</a>
+   <div class="mega-menu">
+    <div class="mega-heading">Handmade Collection</div>
+    <a href="#handmade/candles">Candles</a>
+    <a href="#handmade/crafts">Crafts</a>
+    <a href="#handmade/crochet">Crochet</a>
+   </div>
+  </div>
+
+  <div class="nav-item">
+   <a class="nav-link" href="#accessories">Accessories</a>
+   <div class="mega-menu">
+    <div class="mega-heading">Accessories</div>
+    <div class="accessory-menu">
+     <a href="#accessories/bracelets">Men's Accessories ›</a>
+     <div class="submenu">
+      <a href="#accessories/bracelets">Bracelets</a>
+      <a href="#accessories/wallets">Wallets</a>
+      <a href="#accessories/menswatches">Men's Watches</a>
+     </div>
+    </div>
+    <div class="accessory-menu">
+     <a href="#accessories/bags">Women's Accessories ›</a>
+     <div class="submenu">
+      <a href="#accessories/bags">Bags</a>
+      <a href="#accessories/womenswatches">Women's Watches</a>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="nav-item"><a class="nav-link" href="#jewellery">Artificial Jewellery</a></div>
+  <div class="nav-item"><a class="nav-link" href="#hair">Hair Products</a></div>
+  <div class="nav-item"><a class="nav-link" href="#all">All Products</a></div>
+ </nav>
+
+ <div class="header-actions">
+  <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+  <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">♡<span class="count" id="wishCount">0</span></button>
+  <button class="icon-btn" id="cartBtn" aria-label="Shopping bag">♧<span class="count" id="cartCount">0</span></button>
+ </div>
+</header>
+
+<main id="homePage" class="page-content active">
+ <section class="hero">
+  <img class="hero-image" id="heroImage" src="IMAGES/MENS/mans(casual wear)/(328).jfif" alt="NOORE fashion collection">
+  <div class="hero-content">
+   <div class="eyebrow" id="heroEyebrow">THE NOORE COLLECTION</div>
+   <h1 id="heroTitle">Elegance in Every Detail.</h1>
+   <p id="heroDescription">Discover thoughtfully selected fashion, accessories and lifestyle pieces. A collection made for everyday elegance.</p>
+   <a href="#all" class="primary-btn" id="heroButton">Explore Collection</a>
+  </div>
+  <div class="hero-controls" id="heroControls">
+   <button class="hero-dot active" aria-label="Slide 1" data-slide="0"></button>
+   <button class="hero-dot" aria-label="Slide 2" data-slide="1"></button>
+   <button class="hero-dot" aria-label="Slide 3" data-slide="2"></button>
+  </div>
+ </section>
+
+ <section class="section">
+  <div class="section-heading reveal">
+   <div class="eyebrow">CURATED FOR YOU</div>
+   <h2>Explore Our Collections</h2>
+   <p>Find something special in every collection.</p>
+  </div>
+  <div class="category-feature-grid" id="categoryFeatures"></div>
+ </section>
+
+ <section class="editorial reveal">
+  <div class="editorial-image">
+   <img src="IMAGES/WOMENS/womens(bridal)/(562).jfif" alt="NOORE bridal collection" loading="lazy">
+  </div>
+  <div class="editorial-content">
+   <div class="eyebrow">A TOUCH OF ELEGANCE</div>
+   <h2>Style that speaks without saying a word.</h2>
+   <p>Explore a collection of carefully selected pieces, bringing together personal style, timeless details and everyday inspiration.</p>
+   <a href="#ladies/bridal" class="secondary-btn">Explore Ladies Wear</a>
+  </div>
+ </section>
+
+ <section class="section">
+  <div class="section-heading reveal">
+   <div class="eyebrow">SELECTED FOR YOU</div>
+   <h2>Discover NOORE</h2>
+   <p>A first look at pieces from our collections.</p>
+  </div>
+  <div class="product-grid" id="homeProducts"></div>
+  <div style="text-align:center;margin-top:40px">
+   <a href="#all" class="secondary-btn">Explore All Products</a>
+  </div>
+ </section>
+
+ <section class="editorial reveal">
+  <div class="editorial-content">
+   <div class="eyebrow">THE LITTLE DETAILS</div>
+   <h2>Beautiful things, thoughtfully chosen.</h2>
+   <p>From handmade creations to accessories and personal style, discover more of what makes your collection yours.</p>
+   <a href="#handmade" class="secondary-btn">Discover Handmade</a>
+  </div>
+  <div class="editorial-image">
+   <img src="IMAGES/handicraft/candels/(248).jfif" alt="NOORE handmade candles" loading="lazy">
+  </div>
+ </section>
+
+ <section class="section">
+  <div class="section-heading reveal">
+   <div class="eyebrow">MORE TO DISCOVER</div>
+   <h2>Little Things, Big Details</h2>
+   <p>Explore accessories, jewellery and everyday favourites.</p>
+  </div>
+  <div class="category-feature-grid" id="extraFeatures"></div>
+ </section>
+</main>
+
+<main id="shopPage" class="page-content">
+ <section class="page-banner" id="pageBanner">
+  <div class="eyebrow">THE NOORE COLLECTION</div>
+  <h1 id="pageTitle">Our Collection</h1>
+  <p id="pageDescription">Discover something special.</p>
+ </section>
+ <section class="section">
+  <div class="subcategory-links" id="subcategoryLinks"></div>
+  <div class="shop-toolbar">
+   <p id="productCountText">720 products</p>
+   <select id="sortSelect" aria-label="Sort products">
+    <option value="default">Recommended</option>
+    <option value="az">Name: A to Z</option>
+    <option value="za">Name: Z to A</option>
+    <option value="old">Oldest first</option>
+    <option value="new">Newest first</option>
+   </select>
+  </div>
+  <div class="product-grid" id="shopProducts"></div>
+ </section>
+</main>
+
+<footer class="footer">
+ <div class="footer-grid">
+  <div>
+   <div class="footer-logo">NOORE</div>
+   <p>Discover fashion, accessories and lifestyle pieces selected for everyday elegance.</p>
+  </div>
+  <div>
+   <h4>Collections</h4>
+   <a href="#mens">Men's Wear</a><a href="#ladies">Ladies Wear</a>
+   <a href="#babywear">Babywear</a><a href="#handmade">Handmade</a>
+  </div>
+  <div>
+   <h4>Discover</h4>
+   <a href="#accessories">Accessories</a><a href="#jewellery">Artificial Jewellery</a>
+   <a href="#hair">Hair Products</a><a href="#all">All Products</a>
+  </div>
+  <div>
+   <h4>Information</h4>
+   <a href="#home">Home</a><a href="#all">Our Collections</a>
+   <a href="#contact">Contact</a><a href="#home">About NOORE</a>
+  </div>
+ </div>
+ <div class="footer-bottom">
+  <span>© 2026 NOORE. All rights reserved.</span>
+  <span>Designed with elegance.</span>
+ </div>
+</footer>
+
+<div class="search-overlay" id="searchOverlay">
+ <div class="search-panel">
+  <input type="search" id="searchInput" placeholder="Search products and collections..." aria-label="Search products">
+  <button class="close-btn" id="closeSearch" aria-label="Close search">×</button>
+ </div>
+</div>
+
+<div class="modal-overlay" id="productModal">
+ <div class="product-modal">
+  <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+  <img id="modalImage" src="" alt="Product">
+  <div class="modal-info">
+   <div class="product-category" id="modalCategory"></div>
+   <h2 id="modalTitle"></h2>
+   <div id="modalPrice" class="product-price">Price on enquiry</div>
+   <p>Discover this piece from the NOORE collection. Contact us to enquire about availability and place your order.</p>
+   <button class="full-btn" id="modalAddCart">ADD TO BAG</button>
+   <button class="secondary-btn" style="margin-top:12px" id="modalWishlist">ADD TO WISHLIST</button>
+   <button class="secondary-btn" style="margin-top:12px" id="modalWhatsApp">ORDER ON WHATSAPP</button>
+  </div>
+ </div>
+</div>
+
+<div class="drawer-overlay" id="drawerOverlay">
+ <aside class="drawer">
+  <div class="drawer-header">
+   <h2 id="drawerTitle">Shopping Bag</h2>
+   <button class="close-btn" id="closeDrawer" aria-label="Close drawer">×</button>
+  </div>
+  <div id="drawerItems"></div>
+  <div id="drawerFooter"></div>
+ </aside>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+const groups = [
+ {folder:"accesories/ACCESSORIESMENS/mans(braclet)",start:1,end:33,category:"accessories",sub:"bracelets"},
+ {folder:"accesories/ACCESSORIESMENS/mans(wallets)",start:34,end:55,category:"accessories",sub:"wallets"},
+ {folder:"accesories/ACCESSORIESMENS/mans(watches)",start:56,end:77,category:"accessories",sub:"menswatches"},
+ {folder:"accesories/ACCESSORIESWOMENS/womens(bags)",start:78,end:99,category:"accessories",sub:"bags"},
+ {folder:"accesories/ACCESSORIESWOMENS/womens(watches)",start:100,end:124,category:"accessories",sub:"womenswatches"},
+ {folder:"artificaljwelery",start:125,end:179,category:"jewellery",sub:"jewellery"},
+ {folder:"babywear",start:180,end:216,category:"babywear",sub:"babywear"},
+ {folder:"hair",start:217,end:247,category:"hair",sub:"hair"},
+ {folder:"handicraft/candels",start:248,end:274,category:"handmade",sub:"candles"},
+ {folder:"handicraft/crafts",start:275,end:302,category:"handmade",sub:"crafts"},
+ {folder:"handicraft/crochet",start:303,end:327,category:"handmade",sub:"crochet"},
+ {folder:"MENS/mans(casual wear)",start:328,end:353,category:"mens",sub:"casual"},
+ {folder:"MENS/mans(groom)",start:354,end:385,category:"mens",sub:"groom"},
+ {folder:"MENS/mans(shalwarkammez)",start:386,end:433,category:"mens",sub:"shalwar"},
+ {folder:"MENS/mans(shoes)",start:434,end:456,category:"mens",sub:"shoes"},
+ {folder:"MENS/mans(tshirt)",start:457,end:484,category:"mens",sub:"tshirt"},
+ {folder:"WOMENS/dupatas",start:485,end:504,category:"ladies",sub:"dupattas"},
+ {folder:"WOMENS/shawls",start:505,end:527,category:"ladies",sub:"shawls"},
+ {folder:"WOMENS/unsitcihed",start:528,end:561,category:"ladies",sub:"unstitched"},
+ {folder:"WOMENS/womens(bridal)",start:562,end:612,category:"ladies",sub:"bridal"},
+ {folder:"WOMENS/womens(casualwear)",start:613,end:654,category:"ladies",sub:"casualwear"},
+ {folder:"WOMENS/womens(partywear)",start:655,end:691,category:"ladies",sub:"partywear"},
+ {folder:"WOMENS/womens(sandels)",start:692,end:720,category:"ladies",sub:"sandals"}
+];
+
+const pngImages = new Set([126,138,179]);
+
+const categoryNames = {
+ mens:"Men's Wear",ladies:"Ladies Wear",babywear:"Babywear",
+ handmade:"Handmade",accessories:"Accessories",
+ jewellery:"Artificial Jewellery",hair:"Hair Products",all:"All Products"
+};
+
+const categoryDescriptions = {
+ mens:"Explore modern essentials, everyday outfits and timeless men's style.",
+ ladies:"Discover elegant outfits, beautiful fabrics and occasion wear.",
+ babywear:"Explore lovely little styles for the youngest members of the family.",
+ handmade:"Discover handcrafted details and thoughtfully made creations.",
+ accessories:"Complete your look with carefully selected accessories.",
+ jewellery:"Discover jewellery pieces for a touch of everyday elegance.",
+ hair:"Explore hair accessories and personal style essentials.",
+ all:"Explore every collection and discover your next favourite."
+};
+
+const subcategoryNames = {
+ casual:"Casual Wear",groom:"Groom",shalwar:"Shalwar Kameez",
+ shoes:"Shoes",tshirt:"T-Shirts",dupattas:"Dupattas",
+ shawls:"Shawls",unstitched:"Unstitched",bridal:"Bridal",
+ casualwear:"Casual Wear",partywear:"Party Wear",sandals:"Sandals",
+ candles:"Candles",crafts:"Crafts",crochet:"Crochet",
+ bracelets:"Bracelets",wallets:"Wallets",menswatches:"Men's Watches",
+ womenswatches:"Women's Watches",bags:"Bags",
+ jewellery:"Artificial Jewellery",babywear:"Babywear",hair:"Hair Products"
+};
+
+const subcategories = {
+ mens:["casual","groom","shalwar","shoes","tshirt"],
+ ladies:["dupattas","shawls","unstitched","bridal","casualwear","partywear","sandals"],
+ handmade:["candles","crafts","crochet"],
+ accessories:["bracelets","wallets","menswatches","bags","womenswatches"]
+};
+
+const products = [];
+
+groups.forEach(group=>{
+ for(let n=group.start;n<=group.end;n++){
+  products.push({
+   id:n,
+   name:`${subcategoryNames[group.sub]||categoryNames[group.category]} — ${String(n).padStart(3,"0")}`,
+   category:group.category,
+   sub:group.sub,
+   image:`IMAGES/${group.folder}/(${n}).${pngImages.has(n)?"png":"jfif"}`
+  });
+ }
+});
+
+console.log("NOORE image library:",products.length,"products");
+
+const $ = id => document.getElementById(id);
+
+let currentPage="home";
+let currentSubcategory="all";
+let currentProduct=null;
+let drawerMode="cart";
+let searchTerm="";
+let cart=loadStorage("noore-cart",[]);
+let wishlist=loadStorage("noore-wishlist",[]);
+
+function loadStorage(key,fallback){
+ try{
+  const value=JSON.parse(localStorage.getItem(key));
+  return Array.isArray(value)?value:fallback;
+ }catch(error){return fallback;}
+}
+
+function saveStorage(){
+ try{
+  localStorage.setItem("noore-cart",JSON.stringify(cart));
+  localStorage.setItem("noore-wishlist",JSON.stringify(wishlist));
+ }catch(error){console.warn("Storage unavailable",error);}
+}
+
+function toast(message){
+ const element=$("toast");
+ element.textContent=message;
+ element.classList.add("show");
+ clearTimeout(toast.timer);
+ toast.timer=setTimeout(()=>element.classList.remove("show"),2300);
+}
+
+function getProduct(id){
+ return products.find(p=>p.id===Number(id));
+}
+
+const featureCollections=[
+ {title:"Men's Wear",category:"mens",image:328},
+ {title:"Ladies Wear",category:"ladies",image:613},
+ {title:"Babywear",category:"babywear",image:180},
+ {title:"Handmade",category:"handmade",image:275},
+ {title:"Accessories",category:"accessories",image:78},
+ {title:"Artificial Jewellery",category:"jewellery",image:125}
+];
+
+const extraCollections=[
+ {title:"Hair Products",category:"hair",image:217},
+ {title:"Handmade Candles",category:"handmade",sub:"candles",image:248},
+ {title:"Handmade Crochet",category:"handmade",sub:"crochet",image:303}
+];
+
+function featureCard(item){
+ const product=getProduct(item.image);
+ if(!product)return "";
+ return `
+ <article class="feature-card reveal">
+  <img src="${product.image}" alt="${item.title}" loading="lazy">
+  <div class="feature-card-content">
+   <h3>${item.title}</h3>
+   <a href="#${item.category}${item.sub?"/"+item.sub:""}">Discover Collection</a>
+  </div>
+ </article>`;
+}
+
+function renderFeatures(){
+ $("categoryFeatures").innerHTML=featureCollections.map(featureCard).join("");
+ $("extraFeatures").innerHTML=extraCollections.map(featureCard).join("");
+}
+
+const slides=[
+ {
+  eyebrow:"THE NOORE COLLECTION",
+  title:"Elegance in Every Detail.",
+  description:"Discover thoughtfully selected fashion, accessories and lifestyle pieces. A collection made for everyday elegance.",
+  image:328,link:"#all",button:"Explore Collection"
+ },
+ {
+  eyebrow:"TIMELESS WOMEN'S STYLE",
+  title:"A Beautiful Way to Be You.",
+  description:"Discover elegant outfits and carefully selected pieces for every special moment.",
+  image:562,link:"#ladies",button:"Explore Ladies Wear"
+ },
+ {
+  eyebrow:"THE ART OF THE LITTLE DETAILS",
+  title:"Made to Make Every Day Special.",
+  description:"Explore accessories, handmade creations and little details that make a difference.",
+  image:275,link:"#handmade",button:"Discover Handmade"
+ }
+];
+
+let activeSlide=0;
+
+function showSlide(index){
+ activeSlide=(index+slides.length)%slides.length;
+ const slide=slides[activeSlide];
+ const product=getProduct(slide.image);
+
+ $("heroEyebrow").textContent=slide.eyebrow;
+ $("heroTitle").textContent=slide.title;
+ $("heroDescription").textContent=slide.description;
+ $("heroImage").src=product.image;
+ $("heroButton").href=slide.link;
+ $("heroButton").textContent=slide.button;
+
+ document.querySelectorAll(".hero-dot").forEach((dot,i)=>{
+  dot.classList.toggle("active",i===activeSlide);
+ });
+}
+
+$("heroControls").addEventListener("click",e=>{
+ const dot=e.target.closest("[data-slide]");
+ if(dot)showSlide(Number(dot.dataset.slide));
+});
+
+function productCard(product){
+ const safeName=product.name;
+ const isSaved=wishlist.some(p=>p.id===product.id);
+ return `
+ <article class="product-card reveal">
+  <div class="product-image">
+   <img src="${product.image}" alt="${safeName}" loading="lazy"
+    onerror="this.style.opacity='.2';this.alt='Image unavailable — ${product.id}'">
+   <span class="product-label">${categoryNames[product.category]}</span>
+   <div class="product-actions">
+    <button class="product-action ${isSaved?"selected":""}" title="Wishlist"
+     aria-label="Toggle wishlist" onclick="toggleWishlist(${product.id})">${isSaved?"♥":"♡"}</button>
+   </div>
+   <button class="quick-view" onclick="openProduct(${product.id})">Quick View</button>
+  </div>
+  <div class="product-info">
+   <div class="product-category">${subcategoryNames[product.sub]||categoryNames[product.category]}</div>
+   <h3>${safeName}</h3>
+   <div class="product-price">Price on enquiry</div>
+   <button class="add-small" onclick="addToCart(${product.id});openDrawer('cart')">Add to bag</button>
+  </div>
+ </article>`;
+}
+
+function renderHomeProducts(){
+ const selected=[1,34,78,125,180,217,248,275,328,354,386,434,457,485,505,528,562,613,655,692];
+ $("homeProducts").innerHTML=selected.map(getProduct).filter(Boolean).map(productCard).join("");
+ observeReveals();
+}
+
+function parseHash(){
+ const parts=decodeURIComponent(location.hash.replace(/^#/,"")).split("/");
+ const page=parts[0]||"home";
+ const sub=parts[1]||"all";
+ navigate(page,sub,false);
+}
+
+function navigate(page,sub="all",updateURL=true){
+ if(page!=="home"&&page!=="all"&&!categoryNames[page]){
+  page="home";sub="all";
+ }
+ currentPage=page;
+ currentSubcategory=sub;
+
+ $("homePage").classList.toggle("active",page==="home");
+ $("shopPage").classList.toggle("active",page!=="home");
+
+ if(page!=="home"){
+  const title=categoryNames[page]||"All Products";
+  $("pageTitle").textContent=searchTerm&&page==="all"?"Search Results":title;
+  $("pageDescription").textContent=categoryDescriptions[page]||"Discover something special.";
+  renderBanner(page);
+  renderSubcategories(page);
+  renderShopProducts();
+ }
+
+ closeMobileNav();
+
+ if(updateURL){
+  const hash=page==="home"?"#home":`#${page}${sub!=="all"?"/"+sub:""}`;
+  if(location.hash!==hash)history.pushState({page,sub},"",hash);
+ }
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderBanner(page){
+ const banner=$("pageBanner");
+ const representative={
+  mens:328,ladies:562,babywear:180,handmade:248,
+  accessories:78,jewellery:125,hair:217,all:613
+ };
+ const product=getProduct(representative[page]||613);
+ banner.classList.toggle("has-image",page!=="all");
+ banner.style.backgroundImage=page==="all"?"":"linear-gradient(#17171555,#17171555),url('"+product.image+"')";
+}
+
+function renderSubcategories(page){
+ const holder=$("subcategoryLinks");
+ const list=subcategories[page]||[];
+
+ if(!list.length){holder.innerHTML="";return;}
+
+ holder.innerHTML=`
+  <button class="${currentSubcategory==="all"?"active":""}" data-sub="all">All</button>
+  ${list.map(sub=>`
+   <button class="${currentSubcategory===sub?"active":""}" data-sub="${sub}">
+    ${subcategoryNames[sub]}
+   </button>`).join("")}`;
+}
+
+$("subcategoryLinks").addEventListener("click",e=>{
+ const button=e.target.closest("[data-sub]");
+ if(!button)return;
+ currentSubcategory=button.dataset.sub;
+ renderSubcategories(currentPage);
+ renderShopProducts();
+});
+
+function getFilteredProducts(){
+ let result=products;
+
+ if(currentPage!=="all"){
+  result=result.filter(p=>p.category===currentPage);
+ }
+
+ if(currentSubcategory!=="all"){
+  result=result.filter(p=>p.sub===currentSubcategory);
+ }
+
+ if(searchTerm){
+  result=result.filter(p=>
+   p.name.toLowerCase().includes(searchTerm)||
+   categoryNames[p.category].toLowerCase().includes(searchTerm)||
+   (subcategoryNames[p.sub]||"").toLowerCase().includes(searchTerm)
+  );
+ }
+
+ const sort=$("sortSelect").value;
+ if(sort==="az")result=[...result].sort((a,b)=>a.name.localeCompare(b.name));
+ if(sort==="za")result=[...result].sort((a,b)=>b.name.localeCompare(a.name));
+ if(sort==="old")result=[...result].sort((a,b)=>a.id-b.id);
+ if(sort==="new")result=[...result].sort((a,b)=>b.id-a.id);
+
+ return result;
+}
+
+function renderShopProducts(){
+ const list=getFilteredProducts();
+ $("productCountText").textContent=`Showing ${list.length} of ${products.length} products`;
+
+ $("shopProducts").innerHTML=list.length
+  ?list.map(productCard).join("")
+  :`<div class="empty-state">No products found. Try another search.</div>`;
+
+ observeReveals();
+}
+
+$("sortSelect").addEventListener("change",renderShopProducts);
+
+function openSearch(){
+ $("searchOverlay").classList.add("open");
+ document.body.classList.add("locked");
+ $("searchInput").focus();
+}
+
+function closeSearch(){
+ $("searchOverlay").classList.remove("open");
+ document.body.classList.remove("locked");
+}
+
+$("searchBtn").addEventListener("click",openSearch);
+$("closeSearch").addEventListener("click",closeSearch);
+
+$("searchInput").addEventListener("input",()=>{
+ searchTerm=$("searchInput").value.trim().toLowerCase();
+
+ if(searchTerm){
+  currentSubcategory="all";
+  currentPage="all";
+  $("homePage").classList.remove("active");
+  $("shopPage").classList.add("active");
+  $("pageTitle").textContent="Search Results";
+  $("pageDescription").textContent="Discover products from across the NOORE collection.";
+  $("pageBanner").classList.remove("has-image");
+  $("pageBanner").style.backgroundImage="";
+  $("subcategoryLinks").innerHTML="";
+  renderShopProducts();
+ }else if(currentPage!=="home"){
+  renderShopProducts();
+ }
+});
+
+$("searchInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter"){
+  closeSearch();
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+});
+
+$("searchOverlay").addEventListener("click",e=>{
+ if(e.target===$("searchOverlay"))closeSearch();
+});
+
+function openProduct(id){
+ const product=getProduct(id);
+ if(!product)return;
+
+ currentProduct=product;
+ $("modalImage").src=product.image;
+ $("modalImage").alt=product.name;
+ $("modalTitle").textContent=product.name;
+ $("modalCategory").textContent=categoryNames[product.category]+" / "+(subcategoryNames[product.sub]||"");
+ $("modalPrice").textContent="Price on enquiry";
+ $("modalWishlist").textContent=wishlist.some(p=>p.id===id)?"REMOVE FROM WISHLIST":"ADD TO WISHLIST";
+ $("productModal").classList.add("open");
+ document.body.classList.add("locked");
+}
+
+function closeProduct(){
+ $("productModal").classList.remove("open");
+ document.body.classList.remove("locked");
+}
+
+$("closeModal").addEventListener("click",closeProduct);
+$("productModal").addEventListener("click",e=>{
+ if(e.target===$("productModal"))closeProduct();
+});
+
+$("modalAddCart").addEventListener("click",()=>{
+ if(!currentProduct)return;
+ addToCart(currentProduct.id);
+ closeProduct();
+ openDrawer("cart");
+});
+
+$("modalWishlist").addEventListener("click",()=>{
+ if(!currentProduct)return;
+ toggleWishlist(currentProduct.id);
+ $("modalWishlist").textContent=wishlist.some(p=>p.id===currentProduct.id)?"REMOVE FROM WISHLIST":"ADD TO WISHLIST";
+});
+
+$("modalWhatsApp").addEventListener("click",()=>{
+ if(currentProduct)orderOnWhatsApp([currentProduct]);
+});
+
+function toggleWishlist(id){
+ const product=getProduct(id);
+ if(!product)return;
+
+ if(wishlist.some(p=>p.id===id)){
+  wishlist=wishlist.filter(p=>p.id!==id);
+  toast("Removed from wishlist");
+ }else{
+  wishlist.push(product);
+  toast("Added to wishlist");
+ }
+
+ updateCounts();
+ saveStorage();
+
+ if(drawerMode==="wishlist"&&$("drawerOverlay").classList.contains("open"))renderDrawer();
+ if(currentPage!=="home")renderShopProducts();
+ else renderHomeProducts();
+}
+
+function removeWishlist(id){
+ wishlist=wishlist.filter(p=>p.id!==id);
+ updateCounts();
+ saveStorage();
+ renderDrawer();
+}
+
+function addToCart(id){
+ const product=getProduct(id);
+ if(!product)return;
+
+ const existing=cart.find(p=>p.id===id);
+ if(existing)existing.quantity++;
+ else cart.push({...product,quantity:1});
+
+ updateCounts();
+ saveStorage();
+ toast("Added to shopping bag");
+}
+
+function removeFromCart(id){
+ cart=cart.filter(p=>p.id!==id);
+ updateCounts();
+ saveStorage();
+ renderDrawer();
+}
+
+function changeQuantity(id,amount){
+ const item=cart.find(p=>p.id===id);
+ if(!item)return;
+
+ item.quantity+=amount;
+ if(item.quantity<=0)cart=cart.filter(p=>p.id!==id);
+
+ updateCounts();
+ saveStorage();
+ renderDrawer();
+}
+
+function updateCounts(){
+ $("cartCount").textContent=cart.reduce((sum,p)=>sum+p.quantity,0);
+ $("wishCount").textContent=wishlist.length;
+}
+
+function openDrawer(mode){
+ drawerMode=mode;
+ $("drawerOverlay").classList.add("open");
+ document.body.classList.add("locked");
+ renderDrawer();
+}
+
+function closeDrawer(){
+ $("drawerOverlay").classList.remove("open");
+ document.body.classList.remove("locked");
+}
+
+function renderDrawer(){
+ const isCart=drawerMode==="cart";
+ const items=isCart?cart:wishlist;
+
+ $("drawerTitle").textContent=isCart?"Shopping Bag":"Your Wishlist";
+
+ const holder=$("drawerItems");
+ const footer=$("drawerFooter");
+
+ if(!items.length){
+  holder.innerHTML=`<div class="empty-state">${isCart?"Your shopping bag is empty.":"Your wishlist is empty."}</div>`;
+  footer.innerHTML="";
+  return;
+ }
+
+ holder.innerHTML=items.map(item=>`
+  <div class="drawer-item">
+   <img src="${item.image}" alt="${item.name}">
+   <div>
+    <h4>${item.name}</h4>
+    <p>${categoryNames[item.category]}</p>
+    ${isCart?`
+     <div class="quantity-controls">
+      <button onclick="changeQuantity(${item.id},-1)" aria-label="Decrease quantity">−</button>
+      <span>${item.quantity}</span>
+      <button onclick="changeQuantity(${item.id},1)" aria-label="Increase quantity">+</button>
+     </div>`:""}
+   </div>
+   <button class="remove-item" onclick="${isCart?"removeFromCart":"removeWishlist"}(${item.id})" aria-label="Remove item">×</button>
+  </div>
+ `).join("");
+
+ footer.innerHTML=isCart?`
+  <div class="drawer-total">
+   <span>Total items</span>
+   <strong>${cart.reduce((sum,p)=>sum+p.quantity,0)}</strong>
+  </div>
+  <button class="full-btn" onclick="orderOnWhatsApp(cart)">ORDER ON WHATSAPP</button>
+  <p class="drawer-footer-note">Final prices and availability will be confirmed by NOORE when you place your enquiry.</p>
+ `:`
+  <button class="full-btn" onclick="moveWishlistToCart()">ADD WISHLIST TO BAG</button>
+ `;
+}
+
+function moveWishlistToCart(){
+ [...wishlist].forEach(product=>{
+  const existing=cart.find(p=>p.id===product.id);
+  if(existing)existing.quantity++;
+  else cart.push({...product,quantity:1});
+ });
+ wishlist=[];
+ updateCounts();
+ saveStorage();
+ openDrawer("cart");
+ toast("Wishlist added to bag");
+}
+
+$("cartBtn").addEventListener("click",()=>openDrawer("cart"));
+$("wishlistBtn").addEventListener("click",()=>openDrawer("wishlist"));
+$("closeDrawer").addEventListener("click",closeDrawer);
+
+$("drawerOverlay").addEventListener("click",e=>{
+ if(e.target===$("drawerOverlay"))closeDrawer();
+});
+
+function orderOnWhatsApp(items){
+ if(!items||!items.length){
+  toast("Your bag is empty");
+  return;
+ }
+
+ const lines=items.map(item=>
+  `${item.name} | Image ID: ${item.id}${item.quantity?" | Qty: "+item.quantity:""}`
+ );
+
+ const message=
+`Assalam-o-Alaikum NOORE!
+
+My name is Muhammad Umar.
+
+I would like to enquire about these products:
+
+${lines.join("\n")}
+
+Please share availability and prices.
+
+Thank you!`;
+
+ const phone="923004286689";
+ const url=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+ window.open(url,"_blank","noopener,noreferrer");
+}
+
+function closeMobileNav(){
+ $("mainNav").classList.remove("mobile-open");
+ document.querySelectorAll(".nav-item,.accessory-menu").forEach(el=>{
+  el.classList.remove("mobile-expanded");
+ });
+}
+
+$("mobileMenuBtn").addEventListener("click",()=>{
+ $("mainNav").classList.toggle("mobile-open");
+});
+
+document.querySelectorAll(".nav-item>.nav-link").forEach(link=>{
+ link.addEventListener("click",e=>{
+  if(window.innerWidth<=800){
+   const parent=link.parentElement;
+   const menu=parent.querySelector(".mega-menu");
+   if(menu){
+    e.preventDefault();
+    parent.classList.toggle("mobile-expanded");
+   }
+  }
+ });
+});
+
+document.querySelectorAll(".accessory-menu>a").forEach(link=>{
+ link.addEventListener("click",e=>{
+  if(window.innerWidth<=800){
+   e.preventDefault();
+   link.parentElement.classList.toggle("mobile-expanded");
+  }
+ });
+});
+
+document.querySelectorAll(".nav a,.footer a,.feature-card a,.hero-button").forEach(link=>{
+ link.addEventListener("click",()=>{
+  if(link.getAttribute("href")?.startsWith("#")){
+   const target=link.getAttribute("href").slice(1);
+   if(target.includes("/"))return;
+   closeMobileNav();
+  }
+ });
+});
+
+let revealObserver;
+
+function observeReveals(){
+ if(!("IntersectionObserver" in window)){
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+  return;
+ }
+
+ if(revealObserver)revealObserver.disconnect();
+
+ revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add("visible");
+    revealObserver.unobserve(entry.target);
+   }
+  });
+ },{threshold:.06});
+
+ document.querySelectorAll(".reveal:not(.visible)").forEach(el=>{
+  revealObserver.observe(el);
+ });
+}
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  closeSearch();
+  closeProduct();
+  closeDrawer();
+  closeMobileNav();
+ }
+});
+
+window.addEventListener("hashchange",parseHash);
+window.addEventListener("popstate",parseHash);
+
+window.addEventListener("resize",()=>{
+ if(window.innerWidth>800)closeMobileNav();
+});
+
+renderFeatures();
+renderHomeProducts();
+showSlide(0);
+updateCounts();
+observeReveals();
+
+if(location.hash&&location.hash!=="#home"){
+ parseHash();
+}
+
+console.log("NOORE initialized successfully:",products.length,"products.");
+</script>
+</body>
+</html>
